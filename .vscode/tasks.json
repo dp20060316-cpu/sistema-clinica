@@ -1,0 +1,53 @@
+{
+  // Ctrl+Shift+B arranca el sistema completo.
+  "version": "2.0.0",
+  "options": {
+    "shell": { "executable": "cmd.exe", "args": ["/d", "/c"] }
+  },
+  "tasks": [
+    {
+      "label": "Backend",
+      "type": "shell",
+      "command": "mvn spring-boot:run",
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "isBackground": true,
+      "presentation": { "panel": "dedicated", "group": "clinica", "reveal": "always" },
+      "problemMatcher": {
+        "owner": "clinica-backend",
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "Started ClinicaApplication"
+        }
+      }
+    },
+    {
+      "label": "Frontend",
+      "type": "shell",
+      "command": "(if not exist node_modules npm install) & npm run dev",
+      "options": { "cwd": "${workspaceFolder}/frontend" },
+      "isBackground": true,
+      "presentation": { "panel": "dedicated", "group": "clinica", "reveal": "always" },
+      "problemMatcher": {
+        "owner": "clinica-frontend",
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "ready in"
+        }
+      }
+    },
+    {
+      "label": "Iniciar sistema",
+      "type": "shell",
+      "command": "start \"\" http://localhost:5173",
+      "dependsOn": ["Backend", "Frontend"],
+      "dependsOrder": "parallel",
+      "presentation": { "reveal": "silent", "close": true },
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true }
+    }
+  ]
+}

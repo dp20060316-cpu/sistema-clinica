@@ -1,0 +1,5 @@
+{
+  // Las terminales de este proyecto usan cmd, donde npm funciona sin cambiar
+  // la politica de scripts de PowerShell.
+  "terminal.integrated.defaultProfile.windows": "Command Prompt"
+}

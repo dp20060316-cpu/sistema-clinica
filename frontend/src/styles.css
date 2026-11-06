@@ -1,0 +1,679 @@
+:root {
+  --fondo: #f4f5f2;
+  --superficie: #ffffff;
+  --tinta: #1d2a29;
+  --tinta-suave: #5b6b69;
+  --linea: #dfe3df;
+  --primario: #0e6a61;
+  --primario-oscuro: #0a4f48;
+  --lateral: #123431;
+  --peligro: #b1361f;
+  --peligro-fondo: #fbeae6;
+  --ambar: #8a5a00;
+  --ambar-fondo: #fdf2d8;
+  --verde: #1d6b3a;
+  --verde-fondo: #e3f3e8;
+  --gris-fondo: #eceeeb;
+  --radio: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 650;
+}
+
+h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 650;
+}
+
+a {
+  color: var(--primario);
+}
+
+/* ---------- Estructura ---------- */
+.app {
+  display: grid;
+  grid-template-columns: 216px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.lateral {
+  background: var(--lateral);
+  color: #fff;
+  padding: 22px 12px;
+}
+
+.marca {
+  padding: 0 12px 20px;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.lateral nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lateral nav a {
+  padding: 9px 12px;
+  border-radius: 6px;
+  color: #c9d8d5;
+  text-decoration: none;
+}
+
+.lateral nav a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.lateral nav a.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-weight: 600;
+}
+
+.contenido {
+  width: 100%;
+  max-width: 1120px;
+  padding: 28px 32px 48px;
+}
+
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.subtitulo {
+  margin: 2px 0 0;
+  color: var(--tinta-suave);
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel {
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  margin-bottom: 20px;
+}
+
+.panel-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--linea);
+}
+
+.panel-cuerpo {
+  padding: 16px;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-block;
+  padding: 7px 14px;
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  background: var(--superficie);
+  color: var(--tinta);
+  font: inherit;
+  font-weight: 550;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--gris-fondo);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-primario {
+  border-color: var(--primario);
+  background: var(--primario);
+  color: #fff;
+}
+
+.btn-primario:hover {
+  border-color: var(--primario-oscuro);
+  background: var(--primario-oscuro);
+}
+
+.btn-peligro {
+  color: var(--peligro);
+}
+
+.btn-peligro:hover {
+  background: var(--peligro-fondo);
+}
+
+.btn-chico {
+  padding: 3px 10px;
+  font-size: 14px;
+}
+
+.btn-icono {
+  border: 0;
+  background: none;
+  color: var(--tinta-suave);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* ---------- Tablas ---------- */
+.tabla-marco {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--linea);
+  color: var(--tinta-suave);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+
+td {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--linea);
+  vertical-align: top;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.detalle {
+  display: block;
+  color: var(--tinta-suave);
+  font-size: 13px;
+}
+
+.celda-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.numero {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.vacio {
+  margin: 0;
+  padding: 28px 16px;
+  color: var(--tinta-suave);
+  text-align: center;
+}
+
+/* ---------- Estados ---------- */
+.pill {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pill-programada {
+  background: var(--ambar-fondo);
+  color: var(--ambar);
+}
+
+.pill-atendida,
+.pill-activo {
+  background: var(--verde-fondo);
+  color: var(--verde);
+}
+
+.pill-cancelada,
+.pill-inactivo {
+  background: var(--gris-fondo);
+  color: var(--tinta-suave);
+}
+
+.aviso {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: var(--peligro-fondo);
+  color: var(--peligro);
+}
+
+.alergia {
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: var(--ambar-fondo);
+  color: var(--ambar);
+  font-weight: 550;
+}
+
+/* ---------- Totales de inicio ---------- */
+.totales {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.total {
+  padding: 16px;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  color: inherit;
+  text-decoration: none;
+}
+
+.total:hover {
+  border-color: var(--primario);
+}
+
+.total strong {
+  display: block;
+  font-size: 30px;
+  font-weight: 650;
+  line-height: 1.1;
+}
+
+.total span {
+  color: var(--tinta-suave);
+}
+
+/* ---------- Formularios ---------- */
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.campo > span {
+  color: var(--tinta-suave);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.campo-ancho {
+  grid-column: 1 / -1;
+}
+
+.campo-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+input:not([type='checkbox']),
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #c6ccc7;
+  border-radius: 6px;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primario);
+  outline: 2px solid rgba(14, 106, 97, 0.2);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.formulario-pie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  grid-column: 1 / -1;
+  margin-top: 4px;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--linea);
+}
+
+.filtros .campo {
+  flex: 1 1 170px;
+  max-width: 260px;
+}
+
+.buscador {
+  flex: 1 1 260px;
+  max-width: 420px;
+}
+
+/* ---------- Modal ---------- */
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  overflow-y: auto;
+  background: rgba(18, 40, 38, 0.45);
+}
+
+.modal {
+  width: 100%;
+  max-width: 640px;
+  padding: 20px;
+  border-radius: 10px;
+  background: var(--superficie);
+}
+
+.modal-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+/* ---------- Ficha del paciente ---------- */
+.ficha {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 20px;
+  margin: 0;
+}
+
+.ficha dt {
+  color: var(--tinta-suave);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ficha dd {
+  margin: 0;
+}
+
+.pestanas {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--linea);
+  padding: 8px 8px 0;
+}
+
+.pestana {
+  padding: 8px 14px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--tinta-suave);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pestana-activa {
+  border-bottom-color: var(--primario);
+  color: var(--primario);
+}
+
+.atencion {
+  padding: 16px;
+  border-bottom: 1px solid var(--linea);
+}
+
+.atencion:last-child {
+  border-bottom: 0;
+}
+
+.atencion-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.atencion p {
+  margin: 4px 0;
+  white-space: pre-line;
+}
+
+.etiqueta {
+  color: var(--tinta-suave);
+  font-weight: 600;
+}
+
+.signos {
+  color: var(--tinta-suave);
+  font-size: 14px;
+}
+
+/* ---------- Medicamentos en la receta nueva ---------- */
+.medicamento {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  align-items: end;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--linea);
+}
+
+.medicamento-nota {
+  grid-column: 1 / -1;
+}
+
+/* ---------- Receta impresa ---------- */
+.hoja {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 44px;
+  border: 1px solid var(--linea);
+  background: #fff;
+}
+
+.hoja-cabecera {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--primario);
+}
+
+.hoja-clinica {
+  color: var(--primario);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.hoja-numero {
+  text-align: right;
+}
+
+.hoja-numero strong {
+  display: block;
+  font-size: 16px;
+}
+
+.hoja-datos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 24px;
+  margin: 16px 0;
+}
+
+.hoja-rx {
+  margin: 20px 0 6px;
+  color: var(--primario);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.hoja-lista {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.hoja-lista li {
+  margin-bottom: 12px;
+  break-inside: avoid;
+}
+
+.hoja-medicamento {
+  font-weight: 650;
+}
+
+.hoja-indicaciones {
+  margin-top: 16px;
+  white-space: pre-line;
+}
+
+.hoja-firma {
+  width: 280px;
+  margin: 72px 0 0 auto;
+  padding-top: 6px;
+  border-top: 1px solid var(--tinta);
+  text-align: center;
+  break-inside: avoid;
+}
+
+@page {
+  size: A4;
+  margin: 15mm;
+}
+
+@media print {
+  body {
+    background: #fff;
+    font-size: 13pt;
+  }
+
+  .no-imprimir {
+    display: none !important;
+  }
+
+  .app {
+    display: block;
+  }
+
+  .contenido {
+    max-width: none;
+    padding: 0;
+  }
+
+  .hoja {
+    max-width: none;
+    padding: 0;
+    border: 0;
+  }
+}
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 820px) {
+  .app {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lateral {
+    padding: 12px 16px;
+  }
+
+  .marca {
+    padding: 0 0 8px;
+  }
+
+  .lateral nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .lateral nav a {
+    white-space: nowrap;
+  }
+
+  .contenido {
+    padding: 20px 16px 40px;
+  }
+
+  .totales {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ficha {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .medicamento {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hoja {
+    padding: 24px 18px;
+  }
+}
+
+@media (max-width: 520px) {
+  .formulario,
+  .hoja-datos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
